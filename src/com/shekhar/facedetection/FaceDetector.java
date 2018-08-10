@@ -17,18 +17,19 @@ import org.opencv.objdetect.CascadeClassifier;
 public class FaceDetector {
 
 	private static int imgCount = 0;
-    public static void main(String[] args) {
-    	//µ¼Èëopencv,±¾ÏîÄ¿²ÉÓÃµÄÊÇopencv3.2.0
+        public static void main(String[] args) {
+    	//å¯¼å…¥opencv,æœ¬é¡¹ç›®é‡‡ç”¨çš„æ˜¯opencv3.2.0
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         System.out.println("FaceDetector begin");
-        //²ÉÓÃopencv320\sources\data\haarcascades °²×°Ä¿Â¼ÀïµÄ ÈËÁ³¼ì²âÆ÷ haarÌØÕ÷
-        //getPath() ´òÓ¡³öÀ´µÄÂ·¾¶Ç°Ãæ¶àÁËÒ»¸ö·´Ğ±Ïß£¬µ¼ÖÂ¶Á²»µ½ÅäÖÃÎÄ¼ş
+        //é‡‡ç”¨opencv320\sources\data\haarcascades å®‰è£…ç›®å½•é‡Œçš„ äººè„¸æ£€æµ‹å™¨ haarç‰¹å¾
+        //getPath() æ‰“å°å‡ºæ¥çš„è·¯å¾„å‰é¢å¤šäº†ä¸€ä¸ªåæ–œçº¿ï¼Œå¯¼è‡´è¯»ä¸åˆ°é…ç½®æ–‡ä»¶
         String xmlPath = FaceDetector.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1) ; 
         //System.out.println(xmlPath);
         
-        //¼ì²âµÄÕÕÆ¬
+        //æ£€æµ‹çš„ç…§ç‰‡
         String srcPath = FaceDetector.class.getResource("/img/src/").getPath().substring(1);
-        String dstPath = FaceDetector.class.getResource("/img/dst/").getPath().substring(1);
+        //å¤„ç†å®Œç…§ç‰‡å­˜å‚¨è·¯å¾„		
+	String dstPath = FaceDetector.class.getResource("/img/dst/").getPath().substring(1);
         //System.out.println(srcPath);
         
         //String imgsrc = srcPath+"zhuyin.JPG";
@@ -43,7 +44,7 @@ public class FaceDetector {
         System.out.println(String.format("Detected %s faces", faceDetections.toArray().length));
 
         for (Rect rect : faceDetections.toArray()) {
-        	//»­³öÈËÁ³·½¿ò
+        	//ç”»å‡ºäººè„¸æ–¹æ¡†
             //Imgproc.rectangle(image, new Point(rect.x, rect.y),new Point(rect.x + rect.width, rect.y + rect.height),new Scalar(0, 255, 255));
 
             Rect roi = new Rect(rect.x, rect.y, rect.width, rect.height);
